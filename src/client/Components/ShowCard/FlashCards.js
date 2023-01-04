@@ -11,6 +11,7 @@ const FlashCard = () => {
   console.log(id);
   const [cardData, setCardData] = useState({});
   const [nextCard, setnextCard] = useState({});
+  const [previousCard, setpreviousCard] = useState({});
   const [showFront, setShowFront] = useState(true);
   const navigate = useNavigate();
 
@@ -38,6 +39,20 @@ const FlashCard = () => {
       setnextCard(res.data);
     });
   }, []);
+
+  useEffect(() => {
+    // we cannot use async/await in useEffect without wrapping in outer function
+    const response = axios({
+      method: 'get',
+      withCredentials: true,
+      url: `http://localhost:8080/api/cards/previousCard/${id}`,
+    }).then((res) => {
+      console.log(res.data);
+      console.log('checking for res.data', res.data);
+      setpreviousCard(res.data);
+    });
+  }, []);
+
 
   const deleteCard = () => {
     const response = axios({
@@ -71,10 +86,22 @@ const FlashCard = () => {
 
           <div className={styles.spaceBetween}>
             <button
+              onClick={() => (window.location.href = `/flashcard/${previousCard}`)}
+              className={`${styles.addCardBtn}`}
+            >
+              PREVIOUS CARD
+            </button>
+            <button
               onClick={() => deleteCard()}
               className={`${styles.addCardBtn}`}
             >
               DELETE CARD
+            </button>
+            <button
+              onClick={() => (window.location.href = `/updateCard/${id}`)}
+              className={`${styles.addCardBtn}`}
+            >
+              UPDATE CARD
             </button>
             <button
               onClick={() => (window.location.href = `/flashcard/${nextCard}`)}

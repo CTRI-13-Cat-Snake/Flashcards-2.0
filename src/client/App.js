@@ -5,6 +5,7 @@ import CreateCard from './Components/CreateCard/CreateCard';
 import Navbar from './Components/Navbar/Navbar';
 import FlashCard from './Components/ShowCard/FlashCards';
 import LandingPage from './Components/LandingPage/LandingPage';
+import UpdateCard from './Components/UpdateCard/UpdateCard.js';
 import { useSelector, useDispatch } from 'react-redux';
 import { setEmail } from './Redux/slices/userSlice';
 import axios from 'axios';
@@ -41,6 +42,7 @@ const App = () => {
               <Route exact path="/" element={<LandingPage />} />
               <Route exact path="/library" element={<Home />} />
               <Route exact path="/createCard" element={<CreateCard />} />
+              <Route exact path="/updateCard/:id" element={<UpdateCard />} />
               <Route exact path="/flashcard/:id" element={<FlashCard />} />
             </Routes>
           </div>
