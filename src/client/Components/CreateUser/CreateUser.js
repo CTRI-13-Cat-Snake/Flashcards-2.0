@@ -1,24 +1,23 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import e from 'cors';
+import styles from './CreateUser.module.css'
+import { Link } from 'react-router-dom';
 
 const CreateUser = () => {
-    handleSubmit ((e) => {
-     e.preventDefault();
-    });
+    // handleSubmit ((e) => {
+    //  e.preventDefault();
+    // });
     return(
+      <Link >
        <div>
-           <div className="login-container">
+           <div className={styles.loginContainer}>
         {/* //place our logo or main thing here */}
-        <div className="container">
+        <div className={styles.container}>
           <h1 id="loghead">Login</h1>
           <form>
-            <div className={this.state.invalid} id="invalid">
-              Invalid Input
-            </div>
             <input
-              className="email"
+              className={styles.email}
               type="email"
               name="email"
               placeholder="email..."
@@ -26,7 +25,14 @@ const CreateUser = () => {
               //   onChange={this.handleChange}
             />
             <input
-              className="password"
+            className={styles.username}
+            type='username'
+            name='username'
+            placeholder='username...'
+            required
+            />
+            <input
+              className={styles.password}
               type="password"
               name="password"
               placeholder="password..."
@@ -34,10 +40,13 @@ const CreateUser = () => {
               //   onChange={this.handleChange}
             />
             <div id="buttonRow">
+            <button className={styles.login} id="login" >
+                Login
+              </button>
               <button
-                className="register"
+                className={styles.register}
                 id="register"
-                onClick={this.handleSubmit}
+                // onClick={this.handleSubmit}
               >
                 Register
               </button>
@@ -46,6 +55,7 @@ const CreateUser = () => {
         </div>
       </div>
        </div> 
+        </Link>
     )
 }
 

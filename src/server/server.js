@@ -51,6 +51,14 @@ app.get('/library', (req, res) => {
   res.status(200).redirect('http://localhost:3000/library');
 });
 
+app.get('/createuser', (req, res) => {
+  res.status(200).redirect('http://localhost:3000/createuser');
+});
+
+app.get('/cuser', (req, res) => {
+  res.status(200).redirect('http://localhost:3000/cuser');
+});
+
 // routers
 app.use('/api', apiRouter);
 app.use('/auth', authRouter);

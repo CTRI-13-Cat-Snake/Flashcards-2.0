@@ -26,7 +26,6 @@ const Navbar = ({ leftItems }) => {
               );
             })}
           </div>
-
           <div className={styles.row}>
             <div className={styles.margin}>
               {email ? (
