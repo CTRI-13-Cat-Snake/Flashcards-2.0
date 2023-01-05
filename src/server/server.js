@@ -4,6 +4,7 @@ const apiRouter = require('./apiRouter.js');
 const authRouter = require('./authRouter.js');
 const passport = require('passport');
 const cors = require('cors');
+const userRouter = require('./userRouter.js');
 
 const session = require('express-session'); // required for oauth session
 
@@ -54,6 +55,8 @@ app.get('/library', (req, res) => {
 // routers
 app.use('/api', apiRouter);
 app.use('/auth', authRouter);
+app.use('/user', userRouter);
+console.log('userRouter',userRouter.post);
 
 // global error handler
 app.use((err, req, res, next) => {

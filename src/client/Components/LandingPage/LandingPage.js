@@ -1,6 +1,9 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import landingPageImage from './animation.png';
 import styles from './LandingPage.module.css';
+import CreateUser from '../CreateUser/CreateUser';
+import { useNavigate } from 'react-router-dom';
 
 const LandingPage = () => {
   return (
@@ -22,6 +25,13 @@ const LandingPage = () => {
             href={`http://localhost:8080/auth/google`}
           >
             Log In
+          </a>
+          <a
+            className='usertoDB'
+            id={styles.LandingPageLogin} 
+            href={`/createusers`}      
+          >
+            Login/Register
           </a>
         </div>
       </div>

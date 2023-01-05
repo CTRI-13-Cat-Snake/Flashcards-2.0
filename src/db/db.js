@@ -146,4 +146,48 @@ obj.getUser = async (sub) => {
   }
 };
 
+obj.createUser = async (req, res, next) => {
+  const { Email,Username, Password } = req.body;
+  console.log('reqbody',req.body);
+  // const hash = await bcrypt.hash(password, 10);
+  const values = [Email,Username, Password];
+  const newUserQuery =
+    `INSERT INTO users(Email,Username,Password) VALUES ($1, $2,$3) RETURNING primary_id;`;
+  if (req.body.Email && req.body.Username && req.body.Password) {
+    // console.log('line 15: ', username, hash);
+    await pool
+      .query(newUserQuery, values)
+      .then((data) => {
+        console.log('i go in data');
+        res.locals.newUser = data.rows[0].primary_id;
+        console.log('HELLO IM HERE',res.locals.newUser);
+        return next();
+      })
+      .catch((err) => {
+        console.log('i go in error');
+        return next({
+          log: 'error in userController.createUser',
+          message: { error: err },
+        });
+      });
+  }
+};
+
+obj.verifyUser = async (username) => {
+  try {
+    const sql = `SELECT * FROM users 
+    WHERE users.username=$1`;
+    const data = await pool.query(sql, [username]);
+    if (data.rows.length === 0) {
+      return null;
+    } else if (data.rows.length === 1) {
+      return data.rows[0];
+    } else {
+      console.warn('more than one user found');
+      throw '';
+    }
+  } catch {
+    console.log('crash in db.verifyUser');
+  }
+};
 module.exports = obj;
