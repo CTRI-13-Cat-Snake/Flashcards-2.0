@@ -33,10 +33,10 @@ const App = () => {
   return (
     <>
     <BrowserRouter>
-    <Routes>
-    <Route exact path="/" element={<LandingPage />} />
-    <Route exact path="/createusers" element={<CreateUser />} />
-    </Routes>
+      <Routes>
+        <Route exact path="/" element={<LandingPage />} />
+        <Route exact path="/createusers" element={<CreateUser />} />
+      </Routes>
     </BrowserRouter>
       {/* {!email ? (
         <LandingPage />

@@ -4,7 +4,7 @@ const apiRouter = require('./apiRouter.js');
 const authRouter = require('./authRouter.js');
 const passport = require('passport');
 const cors = require('cors');
-
+const userRouter = require('./userRouter.js')
 const session = require('express-session'); // required for oauth session
 
 const { SESSION_SECRET } = require('../../secrets.js');
@@ -55,13 +55,11 @@ app.get('/createuser', (req, res) => {
   res.status(200).redirect('http://localhost:3000/createuser');
 });
 
-app.get('/cuser', (req, res) => {
-  res.status(200).redirect('http://localhost:3000/cuser');
-});
-
 // routers
 app.use('/api', apiRouter);
 app.use('/auth', authRouter);
+app.use('/user', userRouter);
+console.log('userRouter',userRouter.post);
 
 // global error handler
 app.use((err, req, res, next) => {
