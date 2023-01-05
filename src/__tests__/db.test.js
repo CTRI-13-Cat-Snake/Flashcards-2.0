@@ -14,6 +14,7 @@ const pool = require('../db/pool.js');
  * inside that describe block. You can even nest describes within describes!
  */
 describe('Database Tests', () => {
+  const ogCreateCard = db.createCard();
   /**
    * Jest runs the "beforeAll" function once, before any tests are executed.
    * Here, we write to the file and then reset our database model. Then, we
@@ -28,12 +29,24 @@ describe('Database Tests', () => {
 
   afterAll(async (done) => {
     await pool.close();
+    db.createCard = ogCreateCard
     done();
   });
 
   describe('createCard', () => {
     it('writes a flashcard to the database', async () => {
-      
+    
+    
+    // it('should invoke and return next if res.locals.skip.getUpcomingEvents flag is truthy', async (done) => {
+    //   res.locals.skip.getUpcomingEvents = true;
+  
+    //   await eventController.getUpcomingEvents(req, res, (err) => {
+    //     expect(res.locals.upcomingEvents).not.toBeDefined();
+    //     expect(err).not.toBeDefined();
+    //     done();
+    //   });
+    // });
+  
     // return await pool.request().query(`
     // BEGIN TRANSACTION
     // ${query}
@@ -48,7 +61,8 @@ describe('Database Tests', () => {
       hints: undefined,
       scheduled: undefined
     };
-
+    db.createCard = jest.fn();
+    db.createCard.mockResolvedValue()
     const result = await db.createCard(mockData)
       .then((data) => {
       return data;

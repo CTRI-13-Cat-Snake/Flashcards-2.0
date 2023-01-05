@@ -9,7 +9,7 @@ const app = express();
 const TOKEN = '116844415981086574718';
 
 
-const server = "http://localhost:3000";
+const server = "http://localhost:8080";
 
 xdescribe('Route integration', () => {
   describe('/', () => {
@@ -24,14 +24,14 @@ xdescribe('Route integration', () => {
   })
 })
 
-// describe('POST /library', async () => {
-//   it('responds with 200' , async () => {
-//     const responce = await request(app)
-//       .post('/library')
-//       .set('Authorization', `Bearer ${TOKEN}`)
-//       .expect(200);
-//   } );
-// });
+describe('POST /library', async () => {
+  it('responds with 200' , async () => {
+    const responce = await request(app)
+      .post('/library')
+      .set('Authorization', `Bearer ${TOKEN}`)
+      .expect(200);
+  } );
+});
 
 // describe('Authenticated routes', )
 
