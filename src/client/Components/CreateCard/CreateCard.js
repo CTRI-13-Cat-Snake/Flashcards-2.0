@@ -23,20 +23,21 @@ const CreateCard = () => {
   return (
     <>
       <div id={styles.cardInputs}>
+        <h1 style={{ color: 'white' }} className='createCardTitle'>Create New Card</h1>
         <input
           id={styles.cardTitle}
           onChange={(e) => setTitle(e.target.value)}
-          placeholder='Enter Card Title Here'
+          placeholder="Enter Card Title Here"
         ></input>
         <input
           id={styles.cardFront}
           onChange={(e) => setFront(e.target.value)}
-          placeholder='Enter Question Here'
+          placeholder="Enter Question Here"
         ></input>
         <input
           id={styles.cardBack}
           onChange={(e) => setback(e.target.value)}
-          placeholder='Enter Answer Here'
+          placeholder="Enter Answer Here"
         ></input>
         <button id={styles.addCardBtn} onClick={cb}>
           Add Card <span>&#43;</span>

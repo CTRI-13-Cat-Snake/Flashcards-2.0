@@ -11,7 +11,7 @@ import { setEmail } from './Redux/slices/userSlice';
 import axios from 'axios';
 const App = () => {
   const leftItems = {
-    home: '/library',
+    HOME: '/library',
   };
 
   // On first render, get user data

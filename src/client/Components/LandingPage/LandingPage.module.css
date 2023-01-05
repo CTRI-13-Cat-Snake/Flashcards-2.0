@@ -6,10 +6,13 @@
   margin-bottom: 50px;
 }
 .row {
-  display: flex ;
-  flex-direction: row;  
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  display: flex;
+  flex-direction: row;
   align-content: center;
-  justify-content: space-around;  
+  justify-content: space-around;
 }
 
 #LandingPageLogin {
@@ -26,7 +29,7 @@
 }
 
 #divContainer div {
-  flex:1;
+  flex: 1;
 }
 
 #landingImage {
@@ -36,4 +39,3 @@
   /* left: 50px; */
   /* bottom: 0px; */
 }
-

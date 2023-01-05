@@ -32,7 +32,7 @@ const UpdateCard = (props) => {
       },
     }).then(() => {
       // console.log('im in callback')
-      props.update()
+      props.update();
     });
   }
 
@@ -42,35 +42,39 @@ const UpdateCard = (props) => {
     left: '50%',
     marginTop: '-250px',
     marginLeft: '-250px',
-    backgroundColor: 'white',
+    backgroundColor: 'rgb(35, 35, 35)',
     width: '500px',
     height: '500px',
     borderRadius: '10px',
-    boxShadow: '0px 3px 5px rgba(0,0,0,0.2)'
+    boxShadow: '0px 0px 24px rgb(223, 223, 223)',
   };
 
   return (
     <>
       <div id={styles.cardInputs} style={modalStyles}>
+        <h1 style={{ color: 'white' }}>Update Card</h1>
         <input
           id={styles.cardTitle}
           onChange={(e) => setTitle(e.target.value)}
-          placeholder='Enter Card Title Here'
+          placeholder="Enter Card Title Here"
         ></input>
         <input
           id={styles.cardFront}
           onChange={(e) => setFront(e.target.value)}
-          placeholder='Enter Question Here'
+          placeholder="Enter Question Here"
         ></input>
         <input
           id={styles.cardBack}
           onChange={(e) => setback(e.target.value)}
-          placeholder='Enter Answer Here'
+          placeholder="Enter Answer Here"
         ></input>
-        <button id={styles.addCardBtn} onClick={() => {
-          cb();
-          props.close();
-          }}>
+        <button
+          id={styles.addCardBtn}
+          onClick={() => {
+            cb();
+            props.close();
+          }}
+        >
           Update Card <span>&#43;</span>
         </button>
       </div>

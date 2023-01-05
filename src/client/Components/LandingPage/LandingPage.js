@@ -21,7 +21,7 @@ const LandingPage = () => {
             id={styles.LandingPageLogin}
             href={`http://localhost:8080/auth/google`}
           >
-            log in
+            Log In
           </a>
         </div>
       </div>

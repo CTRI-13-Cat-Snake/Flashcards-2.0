@@ -6,7 +6,7 @@
 }
 
 #cardTitle {
-  margin-top: 100px;
+  margin-top: 50px;
   margin-bottom: 15px;
   padding: 10px 10px;
   width: 50%;
@@ -33,19 +33,27 @@
 #addCardBtn {
   margin-bottom: 15px;
   padding: 10px 10px;
-  width: 20%;
-  background: #8fa582;
+  width: 30%;
+  background-color: rgb(0, 149, 186);
   color: white;
   font-weight: bold;
+  border: none;
+  border-radius: 10px;
 }
 
 #addCardBtn:hover {
-  background: white;
-  color: #8fa582;
-  width: 18%;
+  background: #ffffff;
+  color: rgb(0, 149, 186);
+  width: 30%;
+  border: none;
 }
 
 #addCardBtn span {
   font-weight: bolder;
   font-size: 1.2rem;
+}
+
+h1 {
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 0px;
 }
