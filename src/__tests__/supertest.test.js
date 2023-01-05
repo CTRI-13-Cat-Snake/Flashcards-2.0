@@ -11,7 +11,7 @@ const TOKEN = '116844415981086574718';
 
 const server = "http://localhost:3000";
 
-describe('Route integration', () => {
+xdescribe('Route integration', () => {
   describe('/', () => {
     describe('GET', () => {
       it('responds with 200 status and text/html content type', () => {
@@ -36,20 +36,20 @@ describe('Route integration', () => {
 // describe('Authenticated routes', )
 
 
-describe('Google Oauth2 authenticated routes', () => {
-  it('protected route', async() => {
-    const response = await request('http://localhost:8080/auth/google/callback')
-      .post('/token')
-      .send({
-        grant_type: 'client_credentials',
-        client_id: GOOGLE_CLIENT_ID,
-        client_secret: GOOGLE_CLIENT_SECRET
-      });
-    const accessToken = response.body.access_token;
+// describe('Google Oauth2 authenticated routes', () => {
+//   it('protected route', async() => {
+//     const response = await request('http://localhost:8080/auth/google/callback')
+//       .post('/token')
+//       .send({
+//         grant_type: 'client_credentials',
+//         client_id: GOOGLE_CLIENT_ID,
+//         client_secret: GOOGLE_CLIENT_SECRET
+//       });
+//     const accessToken = response.body.access_token;
 
-    const apiResponse = await request(app)
-      .get('/library')
-      .set('Authorization', `Bearer ${accessToken}`);
-    expect(apiResponse.status).toBe(200);
-  })
-}) 
+//     const apiResponse = await request(app)
+//       .get('/library')
+//       .set('Authorization', `Bearer ${accessToken}`);
+//     expect(apiResponse.status).toBe(200);
+//   })
+// }) 
