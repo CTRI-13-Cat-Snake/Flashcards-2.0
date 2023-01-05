@@ -64,7 +64,7 @@ obj.updateCard = async (args) => {
     // console.log(args); 
     const selectUserSQL = ` SELECT * FROM Cards WHERE _id=$1`;
     const data1 = await pool.query(selectUserSQL, [Number(args['_id'])]);
-    console.log('data1', data1.rows[0]); 
+    // console.log('data1', data1.rows[0]); 
 
     const arr = [
       Number(args['_id']),
@@ -120,7 +120,7 @@ obj.addUser = async (args) => {
     VALUES ($1, $2, $3, $4)
     RETURNING _id;`;
     const data = await pool.query(sql, arr);
-    console.log(data.rows);
+    // console.log(data.rows);
     return data.rows[0]._id;
   } catch (err) {
     console.log('addUser', err);

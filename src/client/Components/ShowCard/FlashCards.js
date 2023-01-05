@@ -1,10 +1,12 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import styles from './flashCard.module.css';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { v4 as uuid } from 'uuid';
 import { json, useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import Popup from 'reactjs-popup';
+import UpdateCard from '../UpdateCard/UpdateCard';
 
 const FlashCard = () => {
   const { id } = useParams();
@@ -13,6 +15,7 @@ const FlashCard = () => {
   const [nextCard, setnextCard] = useState({});
   const [previousCard, setpreviousCard] = useState({});
   const [showFront, setShowFront] = useState(true);
+  const [updateState, setUpdateState] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,10 +25,19 @@ const FlashCard = () => {
       withCredentials: true,
       url: `http://localhost:8080/api/cards/${id}`,
     }).then((res) => {
-      console.log(res.data);
-      setCardData(res.data);
+      // console.log(res.data)
+      // console.log('im in get')
+      // if (res.data.title !== cardData.title || res.data.back !== cardData.back 
+      // || res.data.title !== cardData.title) {
+        setCardData(res.data);
+      // }
     });
-  }, []);
+  }, [updateState]);
+
+  const update = () => {
+    // console.log('im in update')
+    setUpdateState(!updateState);
+  }
 
   useEffect(() => {
     // we cannot use async/await in useEffect without wrapping in outer function
@@ -64,6 +76,7 @@ const FlashCard = () => {
     });
   };
 
+
   return (
     <>
       <div className='container d-flex justify-content-center text-center'>
@@ -97,12 +110,15 @@ const FlashCard = () => {
             >
               DELETE CARD
             </button>
-            <button
+            <Popup trigger={<button className={` ${styles.addCardBtn}`} modal > UPDATE CARD </button>} position="top center">
+              {close => (<UpdateCard update={update} close={close}></UpdateCard>)}
+            </Popup>
+            {/* <button
               onClick={() => (window.location.href = `/updateCard/${id}`)}
               className={`${styles.addCardBtn}`}
             >
               UPDATE CARD
-            </button>
+            </button> */}
             <button
               onClick={() => (window.location.href = `/flashcard/${nextCard}`)}
               className={`${styles.addCardBtn}`}
@@ -115,5 +131,6 @@ const FlashCard = () => {
     </>
   );
 };
+
 
 export default FlashCard;

@@ -41,3 +41,10 @@
     color: #8fa582;
     width: 18%;
   }
+
+  .modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
