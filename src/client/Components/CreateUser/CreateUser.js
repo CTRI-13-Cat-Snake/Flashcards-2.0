@@ -24,7 +24,7 @@ constructor (props,context){
           .then((response) => {
             const userId = response.data;
             window.sessionStorage.setItem('userId', userId);
-            return this.navigateToUrl('http://localhost:3000/library');
+            return this.navigateToUrl('/library');
           })
           .catch((error) => {
             console.error('There was an error!', error);
