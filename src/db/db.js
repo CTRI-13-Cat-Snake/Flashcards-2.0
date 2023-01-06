@@ -28,6 +28,7 @@ obj.readAllCards = async () => {
 
 obj.createCard = async (args) => {
   try {
+    // console.log('THIS IS ARGS', args);
     // this is the current time in format 2022-12-28 12:34:56
     const currentTime = new Date();
     const formattedTime = currentTime
@@ -52,6 +53,7 @@ obj.createCard = async (args) => {
     RETURNING *;`;
     // execute sql command
     const data = await pool.query(sql, arr);
+    // console.log('THIS IS DATA ROWS', data.rows[0]);
     return data.rows[0];
   } catch (err) {
     throw `In db.js:obj.createCard: ${err.message}`;
